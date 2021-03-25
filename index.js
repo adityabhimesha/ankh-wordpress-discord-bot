@@ -12,7 +12,8 @@ app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 app.post("/hook", (req, res) => {
     console.log("Webhook Received!")
-    console.log(req.body) 
+    console.log(req) 
+    
     res.status(200).end() 
 })
 
