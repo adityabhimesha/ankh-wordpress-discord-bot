@@ -16,12 +16,11 @@ app.post("/user_expires", (req, res) => {
     console.log("Webhook Received!")
     var data = req.query
     
-    console.log(data.username)
+    console.log(data)
     console.log(data.user_email)
 
     const channel = client.channels.cache.find(channel => channel.name === channelName)
     channel.send(`Heads Up! ${data.username}, your monthly subscription has ended!`)
-    client.channels.get(channelID).send('My Message');
     res.status(200).end() 
 })
 
