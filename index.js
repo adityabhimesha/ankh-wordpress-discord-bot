@@ -4,7 +4,8 @@ const bodyParser = require("body-parser")
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
 const serverID = '761279321188335666'
-const channelName = '761279321871876101'
+const channelName = 'general';
+const channelID = '761279321871876101'
 
 dotenv.config();
 const app = express()
@@ -20,7 +21,7 @@ app.post("/user_expires", (req, res) => {
 
     const channel = client.channels.cache.find(channel => channel.name === channelName)
     channel.send(`Heads Up! ${data.username}, your monthly subscription has ended!`)
-
+    client.channels.get(channelID).send('My Message');
     res.status(200).end() 
 })
 
