@@ -32,6 +32,46 @@ app.get("/user_expires", (req, res) => {
     res.status(200).end() 
 })
 
+app.get("/user_renews", (req, res) => {
+    console.log("Renew Webhook Received!")
+    var data = req.query
+    //console.log(data)
+
+    const channel = client.channels.cache.find(channel => channel.name === channelName)
+    
+    const msg = new Discord.MessageEmbed()
+	.setColor('#cfa710')
+	.setTitle(`Hello ${capitalize(data.username)}, ANKH FX Membership Renewed!`)
+	.setURL('https://www.ankhfx.com/')
+	.setDescription(`Hello ${capitalize(data.username)}, Your membership has been renewed, Please be patient while our admins give you access to the group!`)
+	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
+	.setTimestamp()
+
+    channel.send(msg);
+
+    res.status(200).end() 
+})
+
+app.get("/new_user", (req, res) => {
+    console.log("Webhook Received!")
+    var data = req.query
+    //console.log(data)
+
+    const channel = client.channels.cache.find(channel => channel.name === channelName)
+    
+    const msg = new Discord.MessageEmbed()
+	.setColor('#cfa710')
+	.setTitle(`Hello ${capitalize(data.username)},GREETINGS, WELCOME TO ANKH FX!`)
+	.setURL('https://www.ankhfx.com/')
+	.setDescription(`Hello ${capitalize(data.username)}, Welcome to the best community in the game, Please read through our #introduction channel to effectively monetize ANKH FX!, PLEASE do be patient while our admins provide access, THANK YOU!`)
+	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
+	.setTimestamp()
+
+    channel.send(msg);
+
+    res.status(200).end() 
+})
+
 
 const capitalize = (s) => {
     if (typeof s !== 'string') return ''
