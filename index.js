@@ -54,7 +54,7 @@ app.get("/user_renews", (req, res) => {
 app.get("/new_user", (req, res) => {
     console.log("New User Webhook Received!")
     var data = req.query
-    
+
     console.log(data)
 
     res.status(200).end() 
@@ -83,10 +83,9 @@ client.on('guildMemberAdd', (member) => {
     console.log(`Welcome Member called!`);
 
     const channel = client.channels.cache.find(channel => channel.name === channelName)
-    
     const msg = new Discord.MessageEmbed()
 	.setColor('#cfa710')
-	.setTitle(`Hello <@${capitalize(member.id)}>,GREETINGS, WELCOME TO ANKH FX!`)
+	.setTitle(`Hello ${capitalize(member.user.username)},GREETINGS, WELCOME TO ANKH FX!`)
 	.setURL('https://www.ankhfx.com/')
 	.setDescription(`Hello <@${capitalize(member.id)}>, Welcome to the best community in the game, Please read through our #introduction channel to effectively monetize ANKH FX!, PLEASE do be patient while our admins provide access, THANK YOU!`)
 	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
