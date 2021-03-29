@@ -2,13 +2,12 @@ const express = require("express")
 
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
-//change these to get onto ANKH FX server
-//const serverID = ''
 const channelName = 'general';
+const domain = "https://ankhfxcom-8047ed.ingress-daribow.easywp.com"  //change to ANKHFX.COM
 
 dotenv.config();
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 443
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 app.get("/user_expires", (req, res) => {
@@ -20,10 +19,10 @@ app.get("/user_expires", (req, res) => {
     
     const msg = new Discord.MessageEmbed()
 	.setColor('#cfa710')
-	.setTitle(`Hello ${capitalize(data.username)}, ANKH FX Membership Expired`)
+	.setTitle(`Hello ${capitalize(data.username)}, YOUR ANKH FX MEMBERSHIP HAS EXPIRED!`)
 	.setURL('https://www.ankhfx.com/')
 	.setDescription(`Hello ${capitalize(data.username)}, Your membership has expired, Please visit the site and renew it to have continous uninterrupted access!`)
-	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
+	.setThumbnail(domain+'/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
 	.setTimestamp()
 
     channel.send(msg);
@@ -40,10 +39,10 @@ app.get("/user_renews", (req, res) => {
     
     const msg = new Discord.MessageEmbed()
 	.setColor('#cfa710')
-	.setTitle(`Hello ${capitalize(data.username)}, ANKH FX Membership Renewed!`)
+	.setTitle(`Hello ${capitalize(data.username)}, YOUR ANKH FX MEMBERSHIP HAS BEEN RENEWED!`)
 	.setURL('https://www.ankhfx.com/')
 	.setDescription(`Hello ${capitalize(data.username)}, Your membership has been renewed, Please be patient while our admins give you access to the group!`)
-	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
+	.setThumbnail(domain+'/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
 	.setTimestamp()
 
     channel.send(msg);
@@ -88,7 +87,7 @@ client.on('guildMemberAdd', (member) => {
 	.setTitle(`Hello ${capitalize(member.user.username)},GREETINGS, WELCOME TO ANKH FX!`)
 	.setURL('https://www.ankhfx.com/')
 	.setDescription(`Hello <@${capitalize(member.id)}>, Welcome to the best community in the game, Please read through our #introduction channel to effectively monetize ANKH FX!, PLEASE do be patient while our admins provide access, THANK YOU!`)
-	.setThumbnail('https://ankhfxcom-8047ed.ingress-daribow.easywp.com/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
+	.setThumbnail(domain+'/wp-content/uploads/2021/03/cropped-ankh-3-e1614877224480.png')
 	.setTimestamp()
 
     channel.send(msg);
