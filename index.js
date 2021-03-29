@@ -7,7 +7,7 @@ const domain = "https://ankhfxcom-8047ed.ingress-daribow.easywp.com"  //change t
 
 dotenv.config();
 const app = express()
-const PORT = process.env.PORT || 443
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
 
 app.get("/user_expires", (req, res) => {
